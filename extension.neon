@@ -1,0 +1,9 @@
+services:
+	-
+		class: Spaze\PHPStan\Reflection\Stripe\RequestProperty
+		tags:
+			- phpstan.broker.propertiesClassReflectionExtension
+		arguments:
+			properties:
+				'Stripe\Subscription::$coupon': string
+				'Stripe\Customer::$source': string
