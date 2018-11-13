@@ -11,6 +11,13 @@ These are not documented using `@property` tags on the classes, and the dev team
 PHPStan will obviously flag such property access and this extension will resolve those errors by telling PHPStan such properties exist.
 
 ## Installation
+
+The package is [hosted on Packagist](https://packagist.org/packages/spaze/phpstan-stripe) so you can install it using [Composer](https://getcomposer.org/):
+
+```
+composer require --dev spaze/phpstan-stripe
+```
+
 Add this to your `phpstan.neon`:
 
 ```
