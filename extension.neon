@@ -7,3 +7,4 @@ services:
 			properties:
 				'Stripe\Subscription::$coupon': string
 				'Stripe\Customer::$source': string
+				'Stripe\Source::$card': Stripe\Card::class
