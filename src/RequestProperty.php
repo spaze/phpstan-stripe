@@ -16,6 +16,7 @@ use PHPStan\Type\MixedType;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\StringType;
 use PHPStan\Type\Type;
+use PHPStan\Type\TypeCombinator;
 
 class RequestProperty implements PropertiesClassReflectionExtension
 {
@@ -47,25 +48,37 @@ class RequestProperty implements PropertiesClassReflectionExtension
 
 	private function getTypeFromString(string $typeString): Type
 	{
-		switch (strtolower($typeString)) {
-			case 'int':
-				return new IntegerType();
-			case 'bool':
-				return new BooleanType();
-			case 'string':
-				return new StringType();
-			case 'float':
-				return new FloatType();
-			case 'array':
-				return new ArrayType(new MixedType(), new MixedType());
-			default:
-				$matches = [];
-				if (preg_match('/^(.*)::class$/', $typeString, $matches)) {
-					return new ObjectType($matches[1]);
-				} else {
-					throw new ShouldNotHappenException("Unknown type {$typeString}");
-				}
+		$types = [];
+		$parts = explode('|', $typeString);
+		foreach ($parts as $part) {
+			switch ($part) {
+				case 'int':
+					$type = new IntegerType();
+					break;
+				case 'bool':
+					$type = new BooleanType();
+					break;
+				case 'string':
+					$type = new StringType();
+					break;
+				case 'float':
+					$type = new FloatType();
+					break;
+				case 'array':
+					$type = new ArrayType(new MixedType(), new MixedType());
+					break;
+				default:
+					$matches = [];
+					if (preg_match('/^(.*)::class$/', $part, $matches)) {
+						$type = new ObjectType($matches[1]);
+					} else {
+						throw new ShouldNotHappenException("Unknown type {$part}");
+					}
+					break;
+			}
+			$types[] = $type;
 		}
+		return TypeCombinator::union(...$types);
 	}
 
 }
