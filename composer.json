@@ -1,6 +1,7 @@
 {
 	"name": "spaze/phpstan-stripe",
 	"description": "Stripe SDK extension for PHPStan",
+	"type": "phpstan-extension",
 	"license": "MIT",
 	"authors": [
 		{
@@ -9,11 +10,21 @@
 			"email": "mail@michalspacek.cz"
 		}
 	],
+	"extra": {
+		"phpstan": {
+			"includes": [
+				"extension.neon"
+			]
+		}
+	},
 	"require": {
 		"php": "^7.0"
 	},
 	"require-dev": {
 		"phpstan/phpstan": "^0.10"
+	},
+	"suggest": {
+		"phpstan/extension-installer": "Allows automatic requirement of extension.neon"
 	},
 	"autoload": {
 		"psr-4": {"Spaze\\PHPStan\\Reflection\\Stripe\\": "src"}

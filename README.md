@@ -20,7 +20,9 @@ The package is [hosted on Packagist](https://packagist.org/packages/spaze/phpsta
 composer require --dev spaze/phpstan-stripe
 ```
 
-Add this to your `phpstan.neon`:
+If you use [phpstan/extension-installer](https://github.com/phpstan/extension-installer), you are all set!
+
+For manual installation, add this to your `phpstan.neon`:
 
 ```
 includes:
