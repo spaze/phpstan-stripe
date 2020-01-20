@@ -42,7 +42,8 @@ class RequestProperty implements PropertiesClassReflectionExtension
 
 	public function getProperty(ClassReflection $classReflection, string $propertyName): PropertyReflection
 	{
-		return new UniversalObjectCrateProperty($classReflection, $this->getTypeFromString($this->properties[$classReflection->getName()][$propertyName]));
+		$type = $this->getTypeFromString($this->properties[$classReflection->getName()][$propertyName]);
+		return new UniversalObjectCrateProperty($classReflection, $type, $type);
 	}
 
 
