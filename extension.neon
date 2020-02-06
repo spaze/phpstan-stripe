@@ -1,3 +1,7 @@
+parameters:
+	universalObjectCratesClasses:
+		- Stripe\StripeObject
+
 services:
 	-
 		class: Spaze\PHPStan\Reflection\Stripe\RequestProperty

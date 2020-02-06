@@ -1,7 +1,7 @@
 # phpstan-stripe
 Stripe SDK extension for PHPStan
 
-PHP library for the Stripe API uses PHP objects where some of the properties are used only when the object is updated.
+Adds support for `Stripe\StripeObject` used by the PHP library for the Stripe API and also for properties used only when the object is updated.
 
 - `Customer::$source`, [used only for `save()`](https://stripe.com/docs/api/customers/update#update_customer-source)
 - `Subscription::$coupon`, [used only for `save()`](https://stripe.com/docs/api/subscriptions/update#update_subscription-coupon)
