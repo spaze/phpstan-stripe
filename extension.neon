@@ -8,5 +8,3 @@ services:
 				'Stripe\Subscription::$coupon': string
 				'Stripe\Customer::$source': string
 				'Stripe\Source::$card': Stripe\Card::class
-				'Stripe\Invoice::$charge': string|Stripe\Charge::class
-				'Stripe\Invoice::$customer': string|Stripe\Customer::class
