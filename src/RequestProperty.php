@@ -25,6 +25,9 @@ class RequestProperty implements PropertiesClassReflectionExtension
 	private $properties = [];
 
 
+	/**
+	 * @param string[][] $properties
+	 */
 	public function __construct(array $properties)
 	{
 		foreach ($properties as $property => $type) {

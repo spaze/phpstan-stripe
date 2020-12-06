@@ -18,10 +18,23 @@
 		}
 	},
 	"require": {
-		"php": "^7.0"
+		"php": "^7.1 || ^8.0"
 	},
 	"require-dev": {
-		"phpstan/phpstan": "^0.10"
+		"phpstan/phpstan": "^0.12",
+		"php-parallel-lint/php-parallel-lint": "^1.2",
+		"php-parallel-lint/php-console-highlighter": "^0.5.0",
+		"spaze/coding-standard": "^0.0.4"
+	},
+	"scripts": {
+		"lint": "vendor/bin/parallel-lint --colors src/",
+		"phpcs": "vendor/bin/phpcs src/",
+		"phpstan": "vendor/phpstan/phpstan/phpstan --ansi analyse --configuration phpstan.neon",
+		"test": [
+			"@lint",
+			"@phpcs",
+			"@phpstan"
+		]
 	},
 	"suggest": {
 		"phpstan/extension-installer": "Allows automatic requirement of extension.neon"
