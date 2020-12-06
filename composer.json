@@ -21,7 +21,13 @@
 		"php": "^7.0 || ^8.0"
 	},
 	"require-dev": {
-		"phpstan/phpstan": "^0.10"
+		"phpstan/phpstan": "^0.12"
+	},
+	"scripts": {
+		"phpstan": "vendor/phpstan/phpstan/phpstan --ansi analyse --configuration phpstan.neon",
+		"test": [
+			"@phpstan"
+		]
 	},
 	"suggest": {
 		"phpstan/extension-installer": "Allows automatic requirement of extension.neon"
