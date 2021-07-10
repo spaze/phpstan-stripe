@@ -1,14 +1,30 @@
 parameters:
 	universalObjectCratesClasses:
-		- Stripe\StripeObject
+		- Spaze\PHPStan\Stripe\Retrofit\Metadata
 
 services:
 	-
-		class: Spaze\PHPStan\Reflection\Stripe\RequestProperty
+		class: Spaze\PHPStan\Stripe\StripeClassReflectionExtension
 		tags:
 			- phpstan.broker.propertiesClassReflectionExtension
 		arguments:
 			properties:
-				'Stripe\Subscription::$coupon': string
+				'Stripe\Customer::$address': Spaze\PHPStan\Stripe\Retrofit\Address|array|null
+				'Stripe\Customer::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
 				'Stripe\Customer::$source': string
-				'Stripe\Source::$card': Stripe\Card::class
+				'Stripe\Event::$data': Spaze\PHPStan\Stripe\Retrofit\EventData
+				'Stripe\Invoice::$customer_address': Spaze\PHPStan\Stripe\Retrofit\Address|null
+				'Stripe\Invoice::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
+				'Stripe\Invoice::$tax_percent': float|null  # deprecated & removed from objects in API https://stripe.com/docs/upgrades#2020-08-27
+				'Stripe\InvoiceLineItem::$discount_amounts': array
+				'Stripe\InvoiceLineItem::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
+				'Stripe\InvoiceLineItem::$period': Spaze\PHPStan\Stripe\Retrofit\Period
+				'Stripe\Source::$card': Stripe\Card
+				'Stripe\Source::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
+				'Stripe\Source::$owner': Spaze\PHPStan\Stripe\Retrofit\SourceOwner
+				'Stripe\Source::$redirect': Spaze\PHPStan\Stripe\Retrofit\Redirect
+				'Stripe\Source::$three_d_secure': Spaze\PHPStan\Stripe\Retrofit\ThreeDSecure
+				'Stripe\Subscription::$coupon': string
+				'Stripe\Subscription::$items': Spaze\PHPStan\Stripe\Retrofit\SubscriptionItems
+				'Stripe\Subscription::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
+				'Stripe\Subscription::$plan': Stripe\Plan
