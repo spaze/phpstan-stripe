@@ -1,15 +1,25 @@
 # phpstan-stripe
 Stripe SDK extension for PHPStan
 
-Adds support for `Stripe\StripeObject` used by the PHP library for the Stripe API and also for properties used only when the object is updated.
+Adds particular types replacing `Stripe\StripeObject` type declaration for many properties in many classes used by the PHP library for the Stripe API.
+See `extension.neon` for the full list of currently replaced properties.
 
-- `Customer::$source`, [used only for `save()`](https://stripe.com/docs/api/customers/update#update_customer-source)
-- `Subscription::$coupon`, [used only for `save()`](https://stripe.com/docs/api/subscriptions/update#update_subscription-coupon)
-- `Source::$card`, [additional hash for a payment method](https://stripe.com/docs/api/sources/object#source_object-type)
-
-These are not documented using `@property` tags on the classes (or the types are wrong), and the dev team [feels](https://github.com/stripe/stripe-php/pull/543) it should stay this way. Honestly, I'm not sure adding `@property` tags would be the best way either.
+Also adds types for properties used only when the object is updated.
+These are not documented using `@property` tags on the classes (or the types are wrong), and the dev team [feels](https://github.com/stripe/stripe-php/pull/543) it should stay this way.
+Honestly, I'm not sure adding `@property` tags would be the best way either.
 
 PHPStan will obviously flag such property access and this extension will resolve those errors by telling PHPStan such properties exist.
+
+This extension is not using
+```
+parameters:
+	universalObjectCratesClasses:
+		- Stripe\StripeObject
+```
+in its configuration because in the SDK, everything `extends StripeObject` (or everything `extends ApiResource` which in turn `extends StripeObject`) so each property your code would read or write would exist, at least for PHPStan.
+And I wanted this extension to provide some more precise checks.
+
+If you don't want to or can't use this extension, add the `universalObjectCratesClasses` config snippet to your `phpstan.neon` and be ready to go.
 
 ## Installation
 
@@ -25,5 +35,5 @@ For manual installation, add this to your `phpstan.neon`:
 
 ```
 includes:
-    - vendor/spaze/phpstan-stripe/extension.neon
+	- vendor/spaze/phpstan-stripe/extension.neon
 ```

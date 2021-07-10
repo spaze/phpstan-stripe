@@ -1,24 +1,23 @@
 <?php
 declare(strict_types = 1);
 
-namespace Spaze\PHPStan\Reflection\Stripe;
+namespace Spaze\PHPStan\Stripe;
 
 use PHPStan\Reflection\ClassReflection;
-use PHPStan\Reflection\Php\UniversalObjectCrateProperty;
 use PHPStan\Reflection\PropertiesClassReflectionExtension;
 use PHPStan\Reflection\PropertyReflection;
-use PHPStan\ShouldNotHappenException;
 use PHPStan\Type\ArrayType;
 use PHPStan\Type\BooleanType;
 use PHPStan\Type\FloatType;
 use PHPStan\Type\IntegerType;
 use PHPStan\Type\MixedType;
+use PHPStan\Type\NullType;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\StringType;
 use PHPStan\Type\Type;
 use PHPStan\Type\TypeCombinator;
 
-class RequestProperty implements PropertiesClassReflectionExtension
+class StripeClassReflectionExtension implements PropertiesClassReflectionExtension
 {
 
 	/** @var string[][] */
@@ -46,7 +45,7 @@ class RequestProperty implements PropertiesClassReflectionExtension
 	public function getProperty(ClassReflection $classReflection, string $propertyName): PropertyReflection
 	{
 		$type = $this->getTypeFromString($this->properties[$classReflection->getName()][$propertyName]);
-		return new UniversalObjectCrateProperty($classReflection, $type, $type);
+		return new StripePropertyReflection($classReflection, $type);
 	}
 
 
@@ -56,6 +55,9 @@ class RequestProperty implements PropertiesClassReflectionExtension
 		$parts = explode('|', $typeString);
 		foreach ($parts as $part) {
 			switch ($part) {
+				case 'null':
+					$type = new NullType();
+					break;
 				case 'int':
 					$type = new IntegerType();
 					break;
@@ -68,15 +70,16 @@ class RequestProperty implements PropertiesClassReflectionExtension
 				case 'float':
 					$type = new FloatType();
 					break;
-				case 'array':
-					$type = new ArrayType(new MixedType(), new MixedType());
-					break;
 				default:
 					$matches = [];
-					if (preg_match('/^(.*)::class$/', $part, $matches)) {
-						$type = new ObjectType($matches[1]);
+					if (preg_match('/^array(?:<([^,]+)(?:,([^,]+))?>)?$/', $part, $matches)) {
+						// `array` or `array<itemType>` or `array<keyType, itemType>`
+						$type = new ArrayType(
+							isset($matches[2]) ? $this->getTypeFromString($matches[1]) : (isset($matches[1]) ? new IntegerType() : new MixedType()),
+							$matches[2] ?? $matches[1] ?? new MixedType()
+						);
 					} else {
-						throw new ShouldNotHappenException("Unknown type {$part}");
+						$type = new ObjectType($part);
 					}
 					break;
 			}
