@@ -21,7 +21,7 @@ services:
 				'Stripe\InvoiceLineItem::$period': Spaze\PHPStan\Stripe\Retrofit\Period
 				'Stripe\Source::$card': Stripe\Card
 				'Stripe\Source::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
-				'Stripe\Source::$owner': Spaze\PHPStan\Stripe\Retrofit\SourceOwner
+				'Stripe\Source::$owner': Spaze\PHPStan\Stripe\Retrofit\SourceOwner|null
 				'Stripe\Source::$redirect': Spaze\PHPStan\Stripe\Retrofit\Redirect
 				'Stripe\Source::$three_d_secure': Spaze\PHPStan\Stripe\Retrofit\ThreeDSecure
 				'Stripe\Subscription::$coupon': string
