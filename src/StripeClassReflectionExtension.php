@@ -76,7 +76,7 @@ class StripeClassReflectionExtension implements PropertiesClassReflectionExtensi
 						// `array` or `array<itemType>` or `array<keyType, itemType>`
 						$type = new ArrayType(
 							isset($matches[2]) ? $this->getTypeFromString($matches[1]) : (isset($matches[1]) ? new IntegerType() : new MixedType()),
-							$matches[2] ?? $matches[1] ?? new MixedType()
+							$matches[2] ?? $matches[1] ?? new MixedType(),
 						);
 					} else {
 						$type = new ObjectType($part);
