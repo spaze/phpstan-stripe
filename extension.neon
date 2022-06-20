@@ -9,6 +9,7 @@ services:
 			- phpstan.broker.propertiesClassReflectionExtension
 		arguments:
 			properties:
+				'Stripe\Charge::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
 				'Stripe\Coupon::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
 				'Stripe\Customer::$address': Spaze\PHPStan\Stripe\Retrofit\Address|array|null
 				'Stripe\Customer::$default_source': null|string|\Stripe\Account|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
