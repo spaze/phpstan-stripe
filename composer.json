@@ -43,5 +43,10 @@
 	},
 	"autoload": {
 		"psr-4": {"Spaze\\PHPStan\\Stripe\\": "src"}
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	}
 }
