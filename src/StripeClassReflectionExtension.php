@@ -20,12 +20,12 @@ use PHPStan\Type\TypeCombinator;
 class StripeClassReflectionExtension implements PropertiesClassReflectionExtension
 {
 
-	/** @var string[][] */
+	/** @var array<string, array<string, string>> */
 	private $properties = [];
 
 
 	/**
-	 * @param string[][] $properties
+	 * @param array<string, string> $properties
 	 */
 	public function __construct(array $properties)
 	{
