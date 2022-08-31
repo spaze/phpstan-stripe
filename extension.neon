@@ -12,7 +12,7 @@ services:
 				'Stripe\Charge::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
 				'Stripe\Coupon::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
 				'Stripe\Customer::$address': Spaze\PHPStan\Stripe\Retrofit\Address|array|null
-				'Stripe\Customer::$default_source': null|string|\Stripe\Account|\Stripe\BankAccount|\Stripe\BitcoinReceiver|\Stripe\Card|\Stripe\Source
+				'Stripe\Customer::$default_source': null|string|\Stripe\Account|\Stripe\BankAccount|\Stripe\Card|\Stripe\Source
 				'Stripe\Customer::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
 				'Stripe\Customer::$source': string
 				'Stripe\Event::$data': Spaze\PHPStan\Stripe\Retrofit\EventData
