@@ -72,11 +72,11 @@ class StripeClassReflectionExtension implements PropertiesClassReflectionExtensi
 					break;
 				default:
 					$matches = [];
-					if (preg_match('/^array(?:<([^,]+)(?:,([^,]+))?>)?$/', $part, $matches)) {
+					if (preg_match('/^array(?:<([^,]+)(?:\s*,\s*([^,]+))?>)?$/', $part, $matches)) {
 						// `array` or `array<itemType>` or `array<keyType, itemType>`
 						$type = new ArrayType(
 							isset($matches[2]) ? $this->getTypeFromString($matches[1]) : (isset($matches[1]) ? new IntegerType() : new MixedType()),
-							$matches[2] ?? $matches[1] ?? new MixedType(),
+							isset($matches[2]) ? $this->getTypeFromString($matches[2]) : (isset($matches[1]) ? $this->getTypeFromString($matches[1]) : new MixedType()),
 						);
 					} else {
 						$type = new ObjectType($part);
