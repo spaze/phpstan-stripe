@@ -23,6 +23,8 @@ services:
 				'Stripe\InvoiceLineItem::$discount_amounts': array
 				'Stripe\InvoiceLineItem::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
 				'Stripe\InvoiceLineItem::$period': Spaze\PHPStan\Stripe\Retrofit\Period
+				'Stripe\PaymentIntent::$next_action': Spaze\PHPStan\Stripe\Retrofit\PaymentIntentNextAction|null
+				'Stripe\PaymentMethod::$card': Spaze\PHPStan\Stripe\Retrofit\PaymentMethodCard|null
 				'Stripe\Source::$card': Stripe\Card
 				'Stripe\Source::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
 				'Stripe\Source::$owner': Spaze\PHPStan\Stripe\Retrofit\SourceOwner|null
