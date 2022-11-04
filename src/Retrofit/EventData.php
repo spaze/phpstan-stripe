@@ -7,6 +7,7 @@ use Stripe\StripeObject;
 
 /**
  * @property StripeObject $object
+ * @property StripeObject $previous_attributes
  */
 class EventData extends StripeObject
 {
