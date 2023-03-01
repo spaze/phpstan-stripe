@@ -5,10 +5,8 @@ namespace Spaze\PHPStan\Stripe\Retrofit;
 
 use Stripe\StripeObject;
 
-/**
- * @property StripeObject $object
- * @property StripeObject $previous_attributes
- */
 class EventData extends StripeObject
 {
+	public StripeObject $object;
+	public StripeObject $previous_attributes;
 }

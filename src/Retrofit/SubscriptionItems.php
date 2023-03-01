@@ -10,8 +10,11 @@ use Stripe\SubscriptionItem;
 /**
  * @template TStripeObject of StripeObject
  * @template-extends Collection<TStripeObject>
- * @property array<int, SubscriptionItem> $data
  */
 class SubscriptionItems extends Collection
 {
+	/**
+	 * @var array<int, SubscriptionItem>
+	 */
+	public array $data;
 }

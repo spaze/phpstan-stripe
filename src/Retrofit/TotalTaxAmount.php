@@ -5,11 +5,9 @@ namespace Spaze\PHPStan\Stripe\Retrofit;
 
 use Stripe\TaxRate;
 
-/**
- * @property int $amount
- * @property bool $inclusive
- * @property string|TaxRate $tax_rate
- */
 class TotalTaxAmount
 {
+	public int $amount;
+	public bool $inclusive;
+	public string|TaxRate $tax_rate;
 }
