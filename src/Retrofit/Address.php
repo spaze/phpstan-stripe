@@ -3,14 +3,12 @@ declare(strict_types = 1);
 
 namespace Spaze\PHPStan\Stripe\Retrofit;
 
-/**
- * @property string $city
- * @property string $country
- * @property string $line1
- * @property string $line2
- * @property string $postal_code
- * @property string $state
- */
 class Address
 {
+	public string $city;
+	public string $country;
+	public string $line1;
+	public string $line2;
+	public string $postal_code;
+	public string $state;
 }
