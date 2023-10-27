@@ -9,6 +9,9 @@ services:
 			- phpstan.broker.propertiesClassReflectionExtension
 		arguments:
 			properties:
+				'Stripe\Balance::$available': 'array<int, Spaze\PHPStan\Stripe\Retrofit\BalanceItem>'
+				'Stripe\Balance::$pending': 'array<int, Spaze\PHPStan\Stripe\Retrofit\BalanceItem>'
+				'Stripe\Balance::$connect_reserved': 'array<int, Spaze\PHPStan\Stripe\Retrofit\BalanceItem>'
 				'Stripe\Charge::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
 				'Stripe\Coupon::$metadata': Spaze\PHPStan\Stripe\Retrofit\Metadata
 				'Stripe\Customer::$address': Spaze\PHPStan\Stripe\Retrofit\Address|array|null
