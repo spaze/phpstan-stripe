@@ -1,8 +1,8 @@
 # phpstan-stripe
 Stripe SDK extension for PHPStan
 
-## Looking for a maintainer/EOL
-This is probably the final release of this extension. I have stopped working on a project that uses the Stripe PHP SDK and unfortunately I'm not currently using Stripe in anyway so making changes (and verifying them in real-world tests!) became a bit difficult. And because I don't want to rely on feedback only and because I like dogfooding, I'd like to invite someone else to co- or even fully (preferred) maintain the extension. I'll keep the repo available and will merge PRs until the end of 2023 and then archive the repository and won't publish any new releases unless of course I'll find a maintainer, or I'll start using Stripe again. Let me know somehow, you can use [the discussion](https://github.com/spaze/phpstan-stripe/discussions/19) I've created.
+## ~~Looking for a maintainer/EOL~~
+UPDATE: I've found a new maintainer(s), see [the discussion](https://github.com/spaze/phpstan-stripe/discussions/19) so this will probably change hands (and URL) soon. Thanks!
 
 ---
 
