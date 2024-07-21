@@ -4,4 +4,3 @@ parameters:
 		- src
 
 includes:
-	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
