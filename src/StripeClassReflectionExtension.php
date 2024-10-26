@@ -75,7 +75,7 @@ class StripeClassReflectionExtension implements PropertiesClassReflectionExtensi
 					if (preg_match('/^array(?:<([^,]+)(?:\s*,\s*([^,]+))?>)?$/', $part, $matches)) {
 						// `array` or `array<itemType>` or `array<keyType, itemType>`
 						$type = new ArrayType(
-							isset($matches[2]) ? $this->getTypeFromString($matches[1]) : (isset($matches[1]) ? new IntegerType() : new MixedType()),
+							isset($matches[1], $matches[2]) ? $this->getTypeFromString($matches[1]) : (isset($matches[1]) ? new IntegerType() : new MixedType()),
 							isset($matches[2]) ? $this->getTypeFromString($matches[2]) : (isset($matches[1]) ? $this->getTypeFromString($matches[1]) : new MixedType()),
 						);
 					} else {
